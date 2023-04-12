@@ -176,7 +176,7 @@ GEM
     nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    ox (2.14.16)
+    pg (0.21.0)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -345,9 +345,8 @@ DEPENDENCIES
   launchy
   mini_magick
   mysql2
-  nokogiri
   opml!
-  ox
+  pg (~> 0.15)
   poltergeist
   pry-byebug
   pry-doc

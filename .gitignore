@@ -11,3 +11,4 @@ coverage
 .rbenv-gemsets
 .DS_Store
 env.production
+.pgsql

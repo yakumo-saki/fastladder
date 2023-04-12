@@ -13,14 +13,12 @@ require 'yaml'
 
 # databases
 gem 'mysql2'
-#gem 'pg'
+gem 'pg', '~> 0.15'
 gem 'sqlite3', '~> 1.3.6'
 
 # Feedjira undefined method `parse' for Feedjira::Feed:Class (dropped on 3.0)
 #gem 'feedjira', '~> 2.2'
 gem 'feedjira'
-gem 'nokogiri'
-gem 'ox'
 
 # i18n-js v4 has breaking change
 gem 'i18n-js', '~> 3.9', '>= 3.9.2'

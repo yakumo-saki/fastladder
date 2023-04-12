@@ -50,6 +50,12 @@ module Fastladder
         begin
           @logger.info "fetch: #{feed.feedlink}"
           response = Fastladder.fetch(feed.feedlink, modified_on: feed.modified_on)
+        rescue => e
+          @logger.error("Error occured in fetch() #{e}")
+          result[:message] = "Error Fastladder.fetch(): #{e}"
+          result[:error] = true
+          result[:response_code] = 500
+          return result
         end
         @logger.info "HTTP status: [#{response.code}] #{feed.feedlink}"
         case response
@@ -135,8 +141,14 @@ module Fastladder
         updated_items: 0,
         error: nil
       }
-      source.body.force_encoding('UTF-8')
-      unless parsed = Feedjira.parse(source.body)
+
+      begin
+        source.body.force_encoding('UTF-8')
+        unless parsed = Feedjira.parse(source.body)
+          result[:error] = 'Cannot parse feed'
+          return result
+        end
+      rescue
         result[:error] = 'Cannot parse feed'
         return result
       end

@@ -1,47 +1,49 @@
-# Fastladder 
+# Fastladder の fork
 
-Fastladder is still the best solution for me. feed-hungry people who want to consume more RSS/Atom feeds, and this is its open-source version.
+aarch64用のコンテナをビルドするだけのつもりがいつの間にか…
+オリジナル: https://github.com/fastladder/fastladder
 
-## Setup
+* とりあえずGemをアップデート
+* docker-composeとDockerfileを追加
+* うまく動かなくなったので少し修正
+* 動作が怪しい
+* PostgreSQLのみサポート（MySQLだと本文が長すぎる場合エラーで落ちる場合がある）
 
-```
-$ git clone git://github.com/fastladder/fastladder.git
-$ cd fastladder
+## how to develop
 
-# For SQLite
-$ cp config/database.yml.sqlite3 config/database.yml
-$ bundle install
+asdfをお使いの場合、自動的にrubyとnodejsのバージョンが切り替わるはずです。
+切り替わらない場合は、 `.tool-versions` を参照してうまくやってください。
+DB起動後の処理をまとめた `run_debug.sh` も用意してあります。
 
-# For MySQL
-$ cp config/database.yml.mysql config/database.yml
-$ bundle install
-
-# For PostgreSQL
-$ cp config/database.yml.postgresql config/database.yml
-$ bundle install
-
-$ bundle exec rake db:create db:migrate
-$ bundle exec rake setup # Setup files for development
-```
-
-## Run
-
-Run fastladder web process
+### DBの起動（データは永続化されません。DBを停止するとすべて削除されます）
 
 ```
-$ bundle exec rails server
+docker compose up db
 ```
 
-Run fastladder crawler process
+上記コマンドでうまく起動しない（permission denied）が出る場合は
+`run_pgsql.sh` を使用してください。（dockerコマンドを直接叩くだけです）
+
+### db:migrate等
 
 ```
-$ bundle exec ruby script/crawler
+RAILS_ENV=production bundle exec rake db:migrate
+RAILS_ENV=production bundle exec rake assets:precompile
 ```
 
-You can run web and crawler processes by [foreman](https://github.com/ddollar/foreman).
+### Webとクローラーの起動
 
 ```
-$ foreman start         # run web and crawler processes
-$ foreman start web     # run web process
-$ foreman start crawler # run crawler process
+foreman start
 ```
+
+foremanがインストールされていない場合は、 `gem install foreman` でインストールしてください。
+なお、foremanは開発時にしか使用しません。foremanを使用したくない場合は、`Procfile`に記述されているコマンドを
+それぞれ実行することで同じ効果が得られます。
+
+### Web UI へのアクセス
+
+ブラウザから `http://localhost:3000` にアクセスしてください。
+初期状態ではユーザーが存在しないのでユーザー登録から始めてください。
+
+### 

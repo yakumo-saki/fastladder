@@ -86,15 +86,19 @@ module Fastladder
     req['If-Modified-Since'] = options[:modified_on] if options[:modified_on]
     req.basic_auth(options[:user] || uri.user, options[:password] || user.password) if options[:user] or uri.user
 
-    http.start
-    res = http.request(req)
-    http.finish
+    begin
+      http.start
+      res = http.request(req)
+      http.finish
+    rescue
+      raise "failed to fetch"
+    end
 
     res
   end
 
   def simple_fetch(link, options = {})
-    open(link.to_s,  "User-Agent" => "Fastladder (https://github.com/fastladder/fastladder)").read
+    URI.open(link.to_s,  "User-Agent" => "Fastladder (https://github.com/fastladder/fastladder)").read
   rescue Exception => e
     Rails.logger.error(e)
     Rails.logger.error(e.backtrace)
