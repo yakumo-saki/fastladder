@@ -16,12 +16,16 @@ gem 'mysql2'
 #gem 'pg'
 gem 'sqlite3'
 
+# Feedjira undefined method `parse' for Feedjira::Feed:Class (dropped on 3.0)
+gem 'feedjira', '~> 2.2'
+
+# i18n-js v4 has breaking change
+gem 'i18n-js', '~> 3.9', '>= 3.9.2'
+
 gem 'addressable', require: 'addressable/uri'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'feed_searcher', '>= 0.0.6'
-gem 'feedjira'
 gem 'haml'
-gem 'i18n-js', '~> 3.9', '>= 3.9.2'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'mini_magick'
