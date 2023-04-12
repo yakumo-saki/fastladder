@@ -19,6 +19,8 @@ gem 'sqlite3'
 # Feedjira undefined method `parse' for Feedjira::Feed:Class (dropped on 3.0)
 #gem 'feedjira', '~> 2.2'
 gem 'feedjira'
+gem 'nokogiri'
+gem 'ox'
 
 # i18n-js v4 has breaking change
 gem 'i18n-js', '~> 3.9', '>= 3.9.2'
@@ -30,7 +32,6 @@ gem 'haml'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'mini_magick'
-gem 'nokogiri'
 gem 'opml', git: 'https://github.com/fastladder/opml'
 gem 'sass-rails', '~> 5.0.0'
 gem 'settingslogic'

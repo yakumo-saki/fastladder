@@ -21,7 +21,7 @@ jobs:
       - run:
           name: "Determine tag name"
           command: |
-            echo "export DOCKER_TAG=`date '+%Y%m%d_%H'`" >> "$BASH_ENV"
+            echo "export DOCKER_TAG=`TZ=JST-9 date '+%Y%m%d_%H'`" >> "$BASH_ENV"
             echo 'export DOCKERHUB_IMAGENAME="yakumosaki/fastladder-aarch64"' >> "$BASH_ENV"
       - checkout
       - run: ls -l
