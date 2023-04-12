@@ -1,9 +1,5 @@
 FROM ruby:2.6-bullseye
 
-COPY ./build /fastladder
-COPY ./database.yml /fastladder/config/database.yml
-COPY ./secrets.yml /fastladder/config/secrets.yml
-
 ENV PORT=3001
 ENV RAILS_ENV=production
 
