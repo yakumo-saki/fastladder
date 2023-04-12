@@ -46,4 +46,10 @@ foremanがインストールされていない場合は、 `gem install foreman`
 ブラウザから `http://localhost:3000` にアクセスしてください。
 初期状態ではユーザーが存在しないのでユーザー登録から始めてください。
 
-### 
+### dockerコンテナのビルド
+
+ヒアドキュメントを使っているのでBuildkitを使う必要があります。
+
+```
+docker buildx build .
+```
