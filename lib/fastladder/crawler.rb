@@ -135,6 +135,7 @@ module Fastladder
         updated_items: 0,
         error: nil
       }
+      source.body.force_encoding('UTF-8')
       unless parsed = Feedjira.parse(source.body)
         result[:error] = 'Cannot parse feed'
         return result
