@@ -1,9 +1,9 @@
 {
   "name": "Fastladder",
   "description": "Open-source version of the Fastladder is a server-based RSS reader.",
-  "website": "http://fastladder.org/",
-  "repository": "https://github.com/fastladder/fastladder",
-  "logo": "http://fastladder.com/img/logo.gif",
+  "website": "https://github.com/fastladder/fastladder",
+  "repository": "https://github.com/yakumo-saki/fastladder",
+  "logo": "",
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
   },
