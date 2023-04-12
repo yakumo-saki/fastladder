@@ -40,6 +40,7 @@ class Item < ActiveRecord::Base
 
   def create_digest
     str = "#{self.title}#{self.body}"
+    str.force_encoding("UTF-8")
     str.gsub!(%r{<br clear="all"\s*/>\s*<a href="http://rss\.rssad\.jp/(.*?)</a>\s*<br\s*/>}im, "")
     str = str.gsub(/\s+/, "")
     digest = Digest::SHA1.hexdigest(str)
