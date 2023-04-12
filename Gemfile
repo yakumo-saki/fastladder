@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
-gem 'rails', '4.2.10'
+gem 'rails', '~> 4.2', '>= 4.2.11.3'
+gem 'bundler', '~> 1.16', '>= 1.16.2'
+
+# https://zenn.dev/harasho/articles/undefined-method-new-for-big-decimal-class
+gem "bigdecimal", "1.4.4"
 
 # Include database gems for the adapters found in the database
 # configuration file or DATABASE_URL
@@ -7,33 +11,10 @@ require 'erb'
 require 'uri'
 require 'yaml'
 
-database_file = File.join(File.dirname(__FILE__), "config/database.yml")
-adapters = []
-
-if File.exist?(database_file)
-  database_config = YAML::load(ERB.new(IO.read(database_file)).result)
-  adapters += database_config.values.map {|conf| conf['adapter']}.compact.uniq
-end
-
-if database_url = ENV['DATABASE_URL']
-  adapters << URI.parse(database_url).scheme
-end
-
-if adapters.any?
-  adapters.each do |adapter|
-    case adapter
-    when 'mysql2'     ; gem 'mysql2'
-    when 'mysql'      ; gem 'mysql'
-    when /postgres/   ; gem 'pg'
-    when /sqlite3/    ; gem 'sqlite3'
-    else
-      warn("Unknown database adapter `#{adapter}` found in config/database.yml, use Gemfile.local to load your own database gems")
-    end
-  end
-else
-  warn("No adapter found in config/database.yml or DATABASE_URL, please configure it first -- fallback to pg")
-  gem 'pg'
-end
+# databases
+gem 'mysql2'
+#gem 'pg'
+gem 'sqlite3'
 
 gem 'addressable', require: 'addressable/uri'
 gem 'coffee-rails', '~> 4.1.0'
