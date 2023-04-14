@@ -1,9 +1,8 @@
 # Phantasma-Reader
 
+* 偉大なオリジナル: https://github.com/fastladder/fastladder
 * これからちょこちょこ変更を入れていく予定なのでとりあえずリネーム。  
 * aarch64用のコンテナをビルドするだけのつもりがいつの間にかソースに手を入れていました
-* 偉大なオリジナル: https://github.com/fastladder/fastladder
-
 * とりあえずGemをアップデート
 * docker-composeとDockerfileを追加
 * うまく動かなくなったので少し修正
