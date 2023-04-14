@@ -1,13 +1,14 @@
-# Fastladder の fork
+# Phantasma-Reader
 
-aarch64用のコンテナをビルドするだけのつもりがいつの間にか…
-オリジナル: https://github.com/fastladder/fastladder
+* これからちょこちょこ変更を入れていく予定なのでとりあえずリネーム。  
+* aarch64用のコンテナをビルドするだけのつもりがいつの間にかソースに手を入れていました
+* 偉大なオリジナル: https://github.com/fastladder/fastladder
 
 * とりあえずGemをアップデート
 * docker-composeとDockerfileを追加
 * うまく動かなくなったので少し修正
 * 動作が怪しい
-* PostgreSQLのみサポート（MySQLだと本文が長すぎる場合エラーで落ちる場合がある）
+* PostgreSQLのみサポート
 
 ## how to develop
 
@@ -53,3 +54,9 @@ foremanがインストールされていない場合は、 `gem install foreman`
 ```
 docker buildx build .
 ```
+
+### Why drop mysql?
+
+* MySQLだと本文が長すぎる場合エラーで落ちる場合があった。
+* それ自体は items.bodyをLARGETEXT型にすれば治るが文字コード絡みでエラーになったりしてつらかった。
+
